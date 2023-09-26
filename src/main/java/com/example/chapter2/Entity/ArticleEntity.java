@@ -1,6 +1,7 @@
 package com.example.chapter2.Entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 @ToString
 @NoArgsConstructor
 @Entity
+@Getter
 public class ArticleEntity {
     @Id // 대푯값
     @GeneratedValue // 자동 생성 기능
