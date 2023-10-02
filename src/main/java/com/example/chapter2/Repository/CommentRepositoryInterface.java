@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CommentRepositoryInterface extends JpaRepository<CommentEntity, Long> {
     // JpaRepository<대상 엔티티, 대표키 값의 타입>
-    @Query(value = "SELECT * FROM commententity WHERE article_id = :articleId",
+    @Query(value = "SELECT * FROM comment_entity WHERE article_id = :articleId",
     nativeQuery = true)
     List<CommentEntity> findByArticleId(Long articleId); //쿼리문을 사용
 

@@ -1,8 +1,10 @@
 package com.example.chapter2.Controller;
 
 import com.example.chapter2.Dto.ArticleDto;
+import com.example.chapter2.Dto.CommentDto;
 import com.example.chapter2.Entity.ArticleEntity;
 import com.example.chapter2.Repository.ArticleRepositoryInterface;
+import com.example.chapter2.Service.CommentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class ArticleController {
     @Autowired // 객체를 생성해주는 어노테이션으로 스프링부트가 미리 생성해 놓은 레포지토리 객체 주입.
     private ArticleRepositoryInterface articleRepositoryInterface;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/articles/new")
     public String newArticleFrom(){
@@ -39,8 +43,10 @@ public class ArticleController {
     {
         logger.info("id = " + id);
         ArticleEntity articleEntity = articleRepositoryInterface.findById(id).orElse(null); //crudrepository가 제공하는 메소드
+        List<CommentDto> commentDtos = commentService.ReadComment(id);
         // id값으로 데이터를 찾을 때 해당 id가 없으면 null을 반환한다.
         model.addAttribute("article",articleEntity); //article이라는 이름으로 articleenity객체 등록
+        model.addAttribute("commentDtos",commentDtos);
         return "articles/show";
     }
     @GetMapping("/articles") //데이터 모두 조회
