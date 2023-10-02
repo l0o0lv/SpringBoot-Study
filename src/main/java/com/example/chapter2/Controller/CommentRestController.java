@@ -1,7 +1,6 @@
 package com.example.chapter2.Controller;
 
 import com.example.chapter2.Dto.CommentDto;
-import com.example.chapter2.Repository.CommentRepositoryInterface;
 import com.example.chapter2.Service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,15 +28,15 @@ public class CommentRestController {
     }
 
     @PatchMapping("/api/comments/{id}")
-    public ResponseEntity<CommentDto> UpdateComment(@PathVariable Long Id,
+    public ResponseEntity<CommentDto> UpdateComment(@PathVariable Long id,
                                                     @RequestBody CommentDto commentDto){
-        CommentDto updatedDto = commentService.UpdateComment(Id,commentDto);
-        return ResponseEntity.status(HttpStatus.OK).body(commentDto);
+        CommentDto updatedDto = commentService.UpdateComment(id,commentDto);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedDto);
     }
 
     @DeleteMapping("/api/comments/{id}")
-    public ResponseEntity<CommentDto> DeleteComment(@PathVariable Long Id){
-        CommentDto deleteDto = commentService.DeleteComment(Id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+    public ResponseEntity<CommentDto> DeleteComment(@PathVariable Long id){
+        CommentDto deleteDto = commentService.DeleteComment(id);
+        return ResponseEntity.status(HttpStatus.OK).body(deleteDto);
     }
 }

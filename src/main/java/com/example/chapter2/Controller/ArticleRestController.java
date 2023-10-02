@@ -2,7 +2,6 @@ package com.example.chapter2.Controller;
 
 import com.example.chapter2.Dto.ArticleDto;
 import com.example.chapter2.Entity.ArticleEntity;
-import com.example.chapter2.Repository.ArticleRepositoryInterface;
 import com.example.chapter2.Service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
